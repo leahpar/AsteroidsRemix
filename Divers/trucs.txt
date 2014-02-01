@@ -1,0 +1,6 @@
+Vector game
+http://gamedevelopment.tutsplus.com/series/cross-platform-vector-shooter-xna--gamedev-10559
+
+3D dev
+http://www.wings3d.com/
+http://www.sketchup.com/3Dfor/game-design
