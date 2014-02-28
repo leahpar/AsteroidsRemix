@@ -5,6 +5,8 @@ Temp/
 # Builds
 Builds/
 
+Library/*
+
 
 #############
 ## detritus

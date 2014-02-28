@@ -1,85 +1,205 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic; // List
 
 public class GameController : MonoBehaviour
 {
-
+	// asteroids to spawn
 	public  GameObject[] asteroidsPrefab;
-	private List<GameObject> asteroids;
-  
-	public  GameObject[] enemiesPrefab;
-	private List<GameObject> enemies;
 
-	public  GameObject[] bonusesPrefab;
-	private List<GameObject> bonuses;
+	// player prefab
+	public GameObject playerPrefab;
+	private GameObject player;
 
+	// game's components
 	private GUIController gui;
+	private MenuController menu;
+	private MusicController music;
 
 	// Game's variables
-	private int   score = 0;
+	public int   score = 0;
+	private bool gameOver;
 
+	private float playerCoeffBase = 0;
+	// coeff
+	private float globalCoeffBase = 0;
+	public static float globalCoeff, playerCoeff, playerCoeff2;	/* XX */
+	// current game's variable
+	public int asteroidKilled;
+	public int timePlayed;
+
+
+	// Waves' options
 	public float startWait = 2.0f;
 	public float spawnWait = 1.5f;
 	public float waveWait  = 5.0f;
 
-	private bool gameOver;
 
-
+	/* 
+	 * Function Start
+	 * Init game's components
+	 */
 	void Start()
 	{
-		gui = gameObject.GetComponent<GUIController>();
-
-		StartCoroutine ("SpawnAsteroids");
+		gui   = gameObject.GetComponent<GUIController>();
+		menu  = gameObject.GetComponent<MenuController>();
+		music = gameObject.GetComponent<MusicController>();
 	}
-	
 
+	/*
+	 * coroutine SpawnAsteroids
+	 * Spawn asteroids in an infinite loop
+	 * (until coroutine is stopped by GameOver function)
+	 */
 	IEnumerator SpawnAsteroids ()
 	{
 		GameObject spawn;
 		AsteroidController spawnController;
 		Vector2 spawnPosition;
-		int totalSpawns, currentSpawn;
-
-		gameOver = false;
+		int waveSpawns, currentSpawns;
 
 		yield return new WaitForSeconds (startWait);
 
-		while (!gameOver)
+		while (true)
 		{
-			totalSpawns = Random.Range(10, 20);
-			currentSpawn = 0;
-			while (currentSpawn < totalSpawns)
+			waveSpawns = Random.Range(10, 20);
+			currentSpawns = 0;
+			while (currentSpawns < waveSpawns)
 			{
+				// Set a random position to spawn
 				spawnPosition = new Vector2((Random.value > 0.5) ? WorldController.xMax : -WorldController.xMax,
 				                            Random.Range(-WorldController.yMax, WorldController.yMax));
-					
+				// Instantiace asteroid
 				spawn = Instantiate (asteroidsPrefab[Random.Range(0, asteroidsPrefab.Length)],
 				                     spawnPosition,
 				                     Quaternion.identity) as GameObject;
+				// Init random speed and torque
 				spawnController = spawn.GetComponent<AsteroidController>();
 				spawnController.RandomStart();
 
-				currentSpawn++;
+				currentSpawns++;
 				yield return new WaitForSeconds (Random.Range(spawnWait/2, spawnWait));
 			}
+			asteroidKilled += waveSpawns;
 			yield return new WaitForSeconds (waveWait);
 		}
 	}
 
+	/* 
+	 * Function AddScore
+	 */
 	public void AddScore(int points)
 	{
 		gui.AddScore(points);
 		score += points;
 	}
 
-
-	void GameOver()
+	/* 
+	 * Function AddKill
+	 * Count enemies killed
+	 */
+	public void AddKill(int count)
 	{
-		gameOver = true;
+		asteroidKilled += count;
 	}
-	
-	void OnEnable()  { PlayerController.OnGameOverAction += GameOver; }
-	void OnDisable() { PlayerController.OnGameOverAction -= GameOver; }
+
+	/*
+	 * Function StartGame
+	 * Init player, waves... and start a game
+	 */
+	public void StartGame()
+	{
+		// Reset game's variables
+		ResetGlobalCoeff();
+		ResetPlayerCoeff();
+		score = 0;
+
+		// Destroy enemies of the last game
+		GameObject[] asteroids = GameObject.FindGameObjectsWithTag("Enemy");
+		foreach(GameObject a in asteroids)
+		{
+			if (a) Destroy(a);
+		}
+
+		// start music
+		music.StartMusic();
+
+		// add a player !
+		player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+		// and spaws asteroids
+		StartCoroutine ("SpawnAsteroids");
+	}
+
+	/*
+	 * Function GameOver
+	 * Stop the game
+	 */
+	public void GameOver()
+	{
+		// Resume game (if stopped)
+		Time.timeScale = 1;
+
+		// time played
+		timePlayed = (int)(Time.time - globalCoeffBase);
+
+		// stop music
+		music.StopMusic();
+
+		// Destroy player
+		EventController.KillAndDestroy(player);
+
+		// stop spawing waves
+		StopCoroutine("SpawnAsteroids");
+
+		// Update global score
+		DataController.GlobalScore += score;
+
+		// Set menu
+		menu.state = MenuController.MENU_STATE_OVER;
+	}
+
+	/*
+	 * Update coeffs
+	 */
+	void FixedUpdate()
+	{
+		playerCoeff2 = Time.time - playerCoeffBase;
+		globalCoeff = 1.0f + (Time.time - globalCoeffBase) / 100.0f;
+		playerCoeff = 1.0f + (Time.time - playerCoeffBase) / 100.0f;
+		playerCoeff2 = Time.time - playerCoeffBase;
+	}
+
+	/*
+	 * Function ResetPlayerCoeff
+	 * Reset player's coeff
+	 */
+	void ResetPlayerCoeff()
+	{
+		playerCoeffBase = Time.time;
+	}
+
+	/*
+	 * function ResetGlobalCoeff
+	 * Reset global coeff
+	 */
+	void ResetGlobalCoeff()
+	{
+		globalCoeffBase = Time.time;
+	}
+
+
+	/* EVENTS */
+
+	void OnEnable()
+	{
+		PlayerController.OnDamageAction += ResetPlayerCoeff;
+		PlayerController.OnGameOverAction += GameOver;
+	}
+	void OnDisable()
+	{
+		PlayerController.OnDamageAction -= ResetPlayerCoeff;
+		PlayerController.OnGameOverAction -= GameOver;
+	}
+
 }
 

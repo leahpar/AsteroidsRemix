@@ -6,18 +6,20 @@ public class AsteroidController : MonoBehaviour
 	public float maxSpeed;
 	public float maxRotation;
 
-	public float health = 100.0f;
+	public float health = 50.0f;
 	public Color color  = Color.white;
-	public float damage = 100.0f;
+	public float damage = 50.0f;
 	public int   score  = 100;
 	public string explosion = Explosion.Basic;
+
+	public int killCount; // count kill or not
 
 	void Start()
 	{
 		gameObject.GetComponent<SpriteRenderer>().color = color;
 
 		Health healthObj = gameObject.AddComponent("Health") as Health;
-		healthObj.health = health * WorldController.coeff;
+		healthObj.health = health * GameController.globalCoeff;
 
 		Explosion explObj  = gameObject.AddComponent("Explosion") as Explosion;
 		explObj.color = color;
@@ -25,9 +27,9 @@ public class AsteroidController : MonoBehaviour
 		explObj.lifeTime = 3.0f;
 
 		Score scoreObj = gameObject.AddComponent("Score") as Score;
-		scoreObj.score = (int)(score * WorldController.playerCoeff);
+		scoreObj.score = (int)(score * GameController.playerCoeff);
 
-		damage = damage * WorldController.coeff;
+		damage = damage * GameController.globalCoeff;
 	}
 
 	public void RandomStart()
@@ -54,6 +56,7 @@ public class AsteroidController : MonoBehaviour
 			EventController.MakeDamage(other.gameObject, damage);
 		}
 	}
+
 }
 
 

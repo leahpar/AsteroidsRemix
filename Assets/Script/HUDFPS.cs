@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
  
 public class HUDFPS : MonoBehaviour
@@ -19,10 +19,12 @@ public class HUDFPS : MonoBehaviour
 	private float accum = 0; // FPS accumulated over the interval
 	private int   frames = 0; // Frames drawn over the interval
 	private float timeleft; // Left time for current interval
+	private string version;
  
 	void Start ()
 	{
-		if (!guiText) {
+		if (!guiText)
+		{
 			Debug.Log ("UtilityFramesPerSecond needs a GUIText component!");
 			enabled = false;
 			return;

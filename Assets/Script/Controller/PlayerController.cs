@@ -8,10 +8,10 @@ public class PlayerController : MonoBehaviour
 	private float   angle;
 
 	private float nextFire;
-	public  float fireRate = 0.1f;
+	public  float fireRate;
 	public GameObject shot;
 	public Transform[] shotSpawns;
-	private int shotCount = 3;
+	private int shotCount;
 
 	private Health healthObj;
 	static public float health;
@@ -22,17 +22,23 @@ public class PlayerController : MonoBehaviour
 	public delegate void GameOverAction();
 	public static event GameOverAction OnGameOverAction;
 
+	private CaracController carac;
+
 	void Start ()
 	{
+		carac = GameObject.FindWithTag("GameController").GetComponent<CaracController>();
+
 		healthObj = gameObject.AddComponent("Health") as Health;
-		healthObj.health = 200.0f;
-		healthObj.regeneration = 5.0f;
+		healthObj.health = carac.GetLife();
+		healthObj.regeneration = carac.GetRegen();
 		
 		Explosion ex  = gameObject.AddComponent("Explosion") as Explosion;
 		ex.color = Color.white;
 		ex.explosionType = Explosion.Player;
 		ex.lifeTime = 5.0f;
 
+		shotCount = carac.GetShot();
+		fireRate = carac.GetFireRate();
 	}
 	
 	void Update ()
@@ -70,4 +76,5 @@ public class PlayerController : MonoBehaviour
 	{
 		OnDamageAction();
 	}
+
 }

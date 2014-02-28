@@ -4,53 +4,68 @@ using System.Collections;
 public class DataController : MonoBehaviour
 {
 
-	public static int   score;
-	public static int   music;
-	public static int   sound;
-	public static float life;
-	public static float regen;
-	public static int   turrets;
-	public static string status;
+	// version
+	public static float version = 0.1f;
+
+	// Global score
+	public static int   GlobalScore		= 0;
+
+	// Options
+	public static int   OptMusic		= 0;
+	public static int   OptSound		= 0;
+
+	// upgrades
+	public static int   UpLife			= 0;
+	public static int   UpRegen			= 0;
+	public static int   UpDmg			= 0;
+	public static int   UpFireRate 		= 0;
+	public static int   UpShot			= 9;
 
 
 	void Awake ()
 	{
 		DontDestroyOnLoad (gameObject);
+		// uncomment to reset prefs
+		// PlayerPrefs.DeleteAll();
+		// SaveData();
 		LoadData();
+		GlobalScore += 1000000;
 	}
 
 	void OnApplicationPause(bool pauseStatus)
 	{
-		status = "OnApplicationPause";
 		if (pauseStatus) SaveData();
 	}
 
 	void OnApplicationQuit()
 	{
-		status = "OnApplicationQuit";
 		SaveData();
 	}
 
 	void SaveData()
 	{
-		PlayerPrefs.SetInt("score", score);
-		PlayerPrefs.SetInt("music", music);
-		PlayerPrefs.SetInt("sound", sound);
-		PlayerPrefs.SetFloat("life", life);
-		PlayerPrefs.SetFloat("regen", regen);
-		PlayerPrefs.SetInt("turrets", turrets);
-		PlayerPrefs.SetString("status", status);
+		PlayerPrefs.SetInt("score", 		GlobalScore);
+		PlayerPrefs.SetInt("OptMusic", 		OptMusic);
+		PlayerPrefs.SetInt("OptSound", 		OptSound);
+		PlayerPrefs.SetInt("UpLife", 		UpLife);
+		PlayerPrefs.SetInt("UpRegen", 		UpRegen);
+		PlayerPrefs.SetInt("UpDmg", 		UpDmg);
+		PlayerPrefs.SetInt("UpFireRate", 	UpFireRate);
+		PlayerPrefs.SetInt("UpShot", 		UpShot);
 		PlayerPrefs.Save();
 	}
 
 	void LoadData()
 	{
-		score = PlayerPrefs.GetInt("score", 0);
-		music = PlayerPrefs.GetInt("music", 1);
-		sound = PlayerPrefs.GetInt("sound", 1);
-		life  = PlayerPrefs.GetFloat("life", 0);
-		regen = PlayerPrefs.GetFloat("regen", 0);
-		turrets = PlayerPrefs.GetInt("turrets", 1);
-		status = PlayerPrefs.GetString("status", "init");
+		GlobalScore = PlayerPrefs.GetInt("score", 		GlobalScore);
+		OptMusic 	= PlayerPrefs.GetInt("OptMusic",	OptMusic);
+		OptSound 	= PlayerPrefs.GetInt("OptSound",	OptSound);
+		UpLife 		= PlayerPrefs.GetInt("UpLife",		UpLife);
+		UpRegen		= PlayerPrefs.GetInt("UpRegen", 	UpRegen);
+		UpDmg 		= PlayerPrefs.GetInt("UpDmg", 		UpDmg);
+		UpFireRate 	= PlayerPrefs.GetInt("UpFireRate", 	UpFireRate);
+		UpShot 		= PlayerPrefs.GetInt("UpShot", 		UpShot);
 	}
 }
+
+

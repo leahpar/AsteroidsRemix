@@ -18,7 +18,7 @@ public class ScoreItem
 public class GUIController : MonoBehaviour
 {
 
-	private int screenWidth, screenHeight;
+	private int screenWidth;
 
 	public GUIText textTopLeft;
 	public GUIText textTopRight;
@@ -33,28 +33,28 @@ public class GUIController : MonoBehaviour
 	public  float fontSizeRatio = 0.020f;
 	private int   fontSize;
 
+	public Texture texture22;
+
 
 	void Start()
 	{
 		screenWidth  = Screen.width;
-		screenHeight = Screen.height;
 
 		scoreList = new List<ScoreItem>();
 
 
 		// define fontSize according to the screen resolution
 		fontSize = (int)((float)screenWidth * fontSizeRatio);
-		Debug.Log(screenWidth + " " + fontSizeRatio + " " + fontSize);
 		textTopLeft.fontSize = fontSize;
 		textTopRight.fontSize = fontSize;
 		textBottomLeft.fontSize = fontSize;
 		textBottomRight.fontSize = fontSize;
-		//skin.button.fontSize = fontSize;
 	}
 
 	void DisplayScore()
 	{
-		textTopLeft.text = scoreLabel;
+		textTopLeft.text = "Score: " + scoreLabel + "\n"
+			+ "Bonus: " + (int)GameController.playerCoeff2 + "%";
 	}
 
 	void DisplayLife()
@@ -64,9 +64,9 @@ public class GUIController : MonoBehaviour
 
 	void DisplayCoeff()
 	{
-		textBottomLeft.text = System.String.Format ("{0:F2}", WorldController.coeff)
+		textBottomLeft.text = System.String.Format ("{0:F2}", GameController.globalCoeff)
                               + " / " +
-                              System.String.Format ("{0:F2}", WorldController.playerCoeff);
+							  System.String.Format ("{0:F2}", GameController.playerCoeff);
 	}
 
 	public void AddScore(int points)

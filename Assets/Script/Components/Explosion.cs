@@ -20,7 +20,7 @@ public class Explosion : MonoBehaviour
 		p.startColor = color;
 		p.Play();
 
-		if (e.audio) e.audio.Play();
+		if (e.audio && (DataController.OptSound == 1)) e.audio.Play();
 
 		Destroy(e, lifeTime);
 	}

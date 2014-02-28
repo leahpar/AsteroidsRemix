@@ -5,8 +5,6 @@ public class WorldController : MonoBehaviour
 {
 	public static float xMax, yMax;
 
-	public static float coeff, playerCoeff;
-	private float playerCoeffBase = 0;
 
 	public GameObject leftBoundary;
 	public GameObject rightBoundary;
@@ -68,19 +66,5 @@ public class WorldController : MonoBehaviour
 		}
 	}
 
-	void FixedUpdate()
-	{
-		coeff = 1.0f + Time.time / 100.0f;
-		playerCoeff = 1.0f + (Time.time - playerCoeffBase) / 100.0f;
-	}
 
-	void ResetPlayerCoeff()
-	{
-		playerCoeffBase = Time.time;
-	}
-
-
-
-	void OnEnable()  { PlayerController.OnDamageAction += ResetPlayerCoeff; }
-	void OnDisable() { PlayerController.OnDamageAction -= ResetPlayerCoeff; }
 }
