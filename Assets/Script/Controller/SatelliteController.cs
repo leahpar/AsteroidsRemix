@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class AsteroidController : MonoBehaviour
+public class SatelliteController : MonoBehaviour
 {
 	public float maxSpeed;
 	public float maxRotation;
@@ -21,7 +21,7 @@ public class AsteroidController : MonoBehaviour
 		Health healthObj = gameObject.AddComponent("Health") as Health;
 		healthObj.health = health * GameController.globalCoeff;
 
-		Explosion explObj = gameObject.AddComponent("Explosion") as Explosion;
+		Explosion explObj  = gameObject.AddComponent("Explosion") as Explosion;
 		explObj.color = color;
 		explObj.explosionType = explosion;
 		explObj.lifeTime = 3.0f;
@@ -39,13 +39,13 @@ public class AsteroidController : MonoBehaviour
 		rigidbody2D.AddTorque(Random.value * maxRotation);
 
 		color = new Color(Random.value, Random.value, Random.value);
-	}
+  }
 
 	public void FixedStart(Quaternion rotation, Vector2 velocity)
 	{
 		rigidbody2D.velocity = velocity + Random.insideUnitCircle * maxSpeed;
 		rigidbody2D.AddTorque(Random.value * maxRotation);
-	}
+  }
 
 	void OnTriggerEnter2D(Collider2D other)
 	{

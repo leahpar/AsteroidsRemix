@@ -13,12 +13,12 @@ public class MenuController : MonoBehaviour
 
 	public int state = 0;
 	private int back = 0;
-	static public int MENU_STATE_STOP  = 0;
-	static public int MENU_STATE_RUN   = 1;
-	static public int MENU_STATE_PAUSE = 2;
-	static public int MENU_STATE_OVER  = 3;
-	static public int MENU_STATE_OPTS  = 4;
-	static public int MENU_STATE_UPGR  = 5;
+	public const int MENU_STATE_STOP  = 0;
+	public const int MENU_STATE_RUN   = 1;
+	public const int MENU_STATE_PAUSE = 2;
+	public const int MENU_STATE_OVER  = 3;
+	public const int MENU_STATE_OPTS  = 4;
+	public const int MENU_STATE_UPGR  = 5;
 
 
 	/* EVENTS */
@@ -38,6 +38,7 @@ public class MenuController : MonoBehaviour
 	{
 		gameController = gameObject.GetComponent<GameController>();
 		carac = gameObject.GetComponent<CaracController>();
+		
 
 		// define fontSize according to the screen resolution
 		skin.button.fontSize = (int)((float)Screen.width * fontSizeRatio);
@@ -51,7 +52,7 @@ public class MenuController : MonoBehaviour
 
 		switch (state)
 		{
-		case 0: // MENU_STATE_STOP
+		case MENU_STATE_STOP:
 			if (AddButton(1, 2, "Start"))
 			{
 				gameController.StartGame();
@@ -73,14 +74,14 @@ public class MenuController : MonoBehaviour
 			}
 #endif
 			break;
-		case 1: // MENU_STATE_RUN
-			if (AddButton2("pause"))
+		case MENU_STATE_RUN:
+			if (AddButton2("||"))
 			{
 				Time.timeScale = 0;
 				state = MENU_STATE_PAUSE;
 			}
 			break;
-		case 2: // MENU_STATE_PAUSE
+		case MENU_STATE_PAUSE:
 			if (AddButton(2, 1, "Resume"))
 			{
 				Time.timeScale = 1;
@@ -91,25 +92,25 @@ public class MenuController : MonoBehaviour
 				state = MENU_STATE_OPTS;
 				back = MENU_STATE_PAUSE;
 			}
-			if (AddButton(2, 3, "Main Menu"))
+			if (AddButton(2, 3, "End game"))
 			{
 				gameController.GameOver();
-				state = MENU_STATE_STOP;
+				state = MENU_STATE_OVER;
 			}
 
 			break;
-		case 3: // MENU_STATE_OVER
-			AddText(2, 1, "<b>GAME OVER</b>");
-			AddText(1, 2, "<b>Game score</b>\n" + gameController.score.ToString("0,0"));
-			AddText(2, 2, "<b>Total score</b>\n" + DataController.GlobalScore.ToString("0,0"));
+		case MENU_STATE_OVER:
+			//AddText(2, 1, "<b>GAME OVER</b>");
+			AddText(1, 2, "<b>Score</b>\n" + gameController.score.ToString("0,0"));
+			AddText(2, 2, "<b>Total points</b>\n" + DataController.Points.ToString("0,0"));
 			AddText(3, 2, "<b>Time</b>\n" + gameController.timePlayed + " sec");
 
-			if (AddButton(2, 3, "Main Menu"))
+			if (AddButton(2, 3, "Main menu"))
 			{
 				state = MENU_STATE_STOP;
 			}
 			break;
-		case 4: // MENU_STATE_OPTS
+		case MENU_STATE_OPTS:
 			if (AddButton(2, 1, "Music : " + (DataController.OptMusic == 0 ? "OFF" : "ON")))
 			{
 				OnMusicToggle();
@@ -122,16 +123,20 @@ public class MenuController : MonoBehaviour
 			{
 				state = back;
 			}
+			//AddTextArea(20, 20, 60, 60, DataController.GetStatistics());
 			break;
-		case 5: // MENU_STATE_UPGR
-			AddText(1, 1, "Points \n" + DataController.GlobalScore.ToString("0,0"));
-			if (AddButton(2, 1, carac.GetLabelLife()))
+		case MENU_STATE_UPGR:
+			if (AddButton(1, 1, carac.GetLabelLife()))
 			{
 				carac.UpdateLife();
 			}
-			if (AddButton(3, 1, carac.GetLabelRegen()))
+			if (AddButton(2, 1, carac.GetLabelRegen()))
 			{
 				carac.UpdateRegen();
+			}
+			if (AddButton(3, 1, carac.GetLabelBonus()))
+			{
+				carac.UpdateBonus();
 			}
 			if (AddButton(1, 2, carac.GetLabelDamage()))
 			{
@@ -141,9 +146,13 @@ public class MenuController : MonoBehaviour
 			{
 				carac.UpdateFireRate();
 			}
-			if ((DataController.UpShot < 10) && AddButton(3, 2, carac.GetLabelExtraShot()))
+			if (DataController.UpShot < 11)
 			{
-				carac.UpdateShot();
+				if (AddButton(3, 2, carac.GetLabelExtraShot())) carac.UpdateShot();
+			}
+			else
+			{
+				if (AddButton(3, 2, carac.GetLabelExtraShot2())) {};
 			}
 			if (AddButton(2, 3, "Back"))
 			{
@@ -164,10 +173,10 @@ public class MenuController : MonoBehaviour
 
 	bool AddButton2(string label)
 	{
-		int px = (int)(0.45f * (float)Screen.width);
+		int px = (int)(0.47f * (float)Screen.width);
 		int py = (int)(0.05f * (float)Screen.height);
-		int dx = (int)(0.11f * (float)Screen.width);
-		int dy = (int)(0.09f * (float)Screen.height);
+		int dx = (int)(0.06f * (float)Screen.width);
+		int dy = (int)(0.10f * (float)Screen.height);
 		return GUI.Button(new Rect(px, py, dx, dy), label);
 	}
 
@@ -177,6 +186,15 @@ public class MenuController : MonoBehaviour
 		int py = (int)(((y-1)*buttonYSize + y*buttonYMargin) / 100.0f * (float)Screen.height);
 		int dx = (int)(buttonXSize / 100.0f * (float)Screen.width);
 		int dy = (int)(buttonYSize / 100.0f * (float)Screen.height);
+		GUI.Box(new Rect(px, py, dx, dy), label);
+	}
+
+	void AddTextArea(float x, float y, float w, float h, string label)
+	{
+		int px = (int)(x/100.0f * (float)Screen.width);
+		int py = (int)(y/100.0f * (float)Screen.height);
+		int dx = (int)(w/100.0f * (float)Screen.width);
+		int dy = (int)(h/100.0f * (float)Screen.height);
 		GUI.Box(new Rect(px, py, dx, dy), label);
 	}
 

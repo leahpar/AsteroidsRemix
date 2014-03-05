@@ -37,16 +37,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="231.95595"
-     inkscape:cy="454.72419"
+     inkscape:zoom="1.979899"
+     inkscape:cx="146.84879"
+     inkscape:cy="443.51494"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1280"
-     inkscape:window-height="977"
-     inkscape:window-x="-4"
-     inkscape:window-y="-4"
+     inkscape:window-width="1680"
+     inkscape:window-height="987"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="axonomgrid"
@@ -75,17 +75,17 @@
      id="layer1"
      transform="translate(0,-52.362183)">
     <path
-       style="fill:none;stroke:#dcdcdc;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#dcdcdc;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 91.528381,524.98113 9.908999,17.16287 9.90899,-5.72096 9.90899,5.72096 9.90899,-17.16287 0,22.88383 -19.81798,11.44192 -19.817989,-11.44192 z"
        id="path3779"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccccc"
-       inkscape:export-filename="D:\rbacco\perso\Unity\TestProject\Assets\Textures\Asteroids\player.png"
+       inkscape:export-filename="C:\Users\raphael\Desktop\Unity\AsteroidsRemix\Assets\Textures\player.png"
        inkscape:export-xdpi="228.47226"
        inkscape:export-ydpi="228.47226" />
     <path
        sodipodi:type="star"
-       style="fill:none;stroke:#ffffff;stroke-width:5.14724554;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#f0f0f0;stroke-width:8.57874256000000020;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="path3789"
        sodipodi:sides="6"
        sodipodi:cx="490.97504"
@@ -99,15 +99,15 @@
        inkscape:randomized="0"
        d="m 490.97504,592.51968 -30.68594,-17.71653 0,-35.43308 30.68594,-17.71653 30.68594,17.71653 0,35.43307 z"
        transform="matrix(0.582836,0,0,0.582836,-93.532717,328.90825)"
-       inkscape:export-filename="D:\rbacco\perso\Unity\TestProject\Assets\Textures\Asteroids\Enemy1.png"
+       inkscape:export-filename="C:\Users\raphael\Desktop\Unity\AsteroidsRemix\Assets\Textures\Enemy1.png"
        inkscape:export-xdpi="316.20428"
        inkscape:export-ydpi="316.20428" />
     <g
        id="g3821"
-       style="stroke:#ffffff;stroke-width:5.14724554;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       inkscape:export-filename="D:\temp\path3830.png"
-       inkscape:export-xdpi="102.63"
-       inkscape:export-ydpi="102.63"
+       style="stroke:#f0f0f0;stroke-width:8.57874256000000020;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:export-filename="C:\Users\raphael\Desktop\Unity\AsteroidsRemix\Assets\Textures\Enemy2.png"
+       inkscape:export-xdpi="291.54999"
+       inkscape:export-ydpi="291.54999"
        transform="matrix(0.582836,0,0,0.582836,-24.544108,370.67053)">
       <path
          transform="translate(0,52.362183)"
@@ -123,7 +123,7 @@
          sodipodi:cx="490.97504"
          sodipodi:sides="64"
          id="path3815"
-         style="fill:none;stroke:#ffffff;stroke-width:5.14724554;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         style="fill:none;stroke:#f0f0f0;stroke-width:8.57874256000000020;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
          sodipodi:type="star" />
       <path
          transform="translate(0,52.362183)"
@@ -139,12 +139,12 @@
          sodipodi:cx="490.97504"
          sodipodi:sides="64"
          id="path3819"
-         style="fill:none;stroke:#ffffff;stroke-width:5.14724554;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         style="fill:none;stroke:#f0f0f0;stroke-width:8.57874256000000020;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
          sodipodi:type="star" />
     </g>
     <path
        sodipodi:type="star"
-       style="fill:none;stroke:#ffffff;stroke-width:5.14724554;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#f0f0f0;stroke-width:8.57874256000000020;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="path3827"
        sodipodi:sides="5"
        sodipodi:cx="552.34692"
@@ -226,93 +226,49 @@
        inkscape:export-ydpi="102.63" />
     <path
        sodipodi:type="arc"
-       style="fill:none;stroke:#dcdcdc;stroke-width:4.64516642;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#dcdcdc;stroke-width:7.74194403;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="path3836"
        sodipodi:cx="129.20351"
        sodipodi:cy="464.77438"
        sodipodi:rx="49.420067"
        sodipodi:ry="49.420067"
-       d="m 178.62357,464.77438 a 49.420067,49.420067 0 1 1 -98.84013,0 49.420067,49.420067 0 1 1 98.84013,0 z"
+       d="m 178.62357,464.77438 c 0,27.29395 -22.12611,49.42007 -49.42006,49.42007 -27.29395,0 -49.42007,-22.12612 -49.42007,-49.42007 0,-27.29395 22.12612,-49.42006 49.42007,-49.42006 27.29395,0 49.42006,22.12611 49.42006,49.42006 z"
        transform="matrix(0.64583262,0,0,0.64583262,27.902524,234.82725)"
-       inkscape:export-filename="D:\rbacco\perso\Unity\TestProject\Assets\Textures\Asteroids\player.png"
+       inkscape:export-filename="C:\Users\raphael\Desktop\Unity\AsteroidsRemix\Assets\Textures\player.png"
        inkscape:export-xdpi="228.47226"
        inkscape:export-ydpi="228.47226" />
     <path
-       style="fill:none;stroke:#00ffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#00ffff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 243.08673,503.00335 -6.13719,3.54331 6.13719,24.80315 6.13719,-24.80315 z"
        id="path3840"
        inkscape:connector-curvature="0"
-       inkscape:export-filename="D:\rbacco\perso\Unity\TestProject\Assets\Textures\Asteroids\shot1.png"
+       inkscape:export-filename="C:\Users\raphael\Desktop\Unity\AsteroidsRemix\Assets\Textures\shot1.png"
        inkscape:export-xdpi="102.63"
        inkscape:export-ydpi="102.63" />
     <path
-       style="fill:none;stroke:#ffffff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;stroke:#f0f0f0;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 61.371879,592.51969 0,17.71653 15.34297,-8.85827 z"
        id="path3778"
        inkscape:connector-curvature="0"
        transform="translate(0,52.362183)"
-       inkscape:export-filename="D:\rbacco\perso\Unity\TestProject\Assets\Textures\Asteroids\Debris.png"
+       inkscape:export-filename="C:\Users\raphael\Desktop\Unity\AsteroidsRemix\Assets\Textures\Debris.png"
        inkscape:export-xdpi="316.20428"
        inkscape:export-ydpi="316.20428" />
     <path
        inkscape:export-ydpi="102.63"
        inkscape:export-xdpi="102.63"
-       inkscape:export-filename="D:\rbacco\perso\Unity\TestProject\Assets\Textures\Asteroids\shot1.png"
+       inkscape:export-filename="C:\Users\raphael\Desktop\Unity\AsteroidsRemix\Assets\Textures\shot1.png"
        inkscape:connector-curvature="0"
        id="path3854"
        d="m 243.08673,503.00335 -6.13719,3.54331 6.13719,24.80315 6.13719,-24.80315 z"
-       style="fill:none;stroke:#00ffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3856)" />
+       style="fill:none;stroke:#00ffff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3856)" />
     <path
-       style="fill:none;stroke:#00ffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3856)"
+       style="fill:none;stroke:#00ffff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3856)"
        d="m 243.08673,503.00335 -6.13719,3.54331 6.13719,24.80315 6.13719,-24.80315 z"
        id="path3860"
        inkscape:connector-curvature="0"
-       inkscape:export-filename="D:\rbacco\perso\Unity\TestProject\Assets\Textures\Asteroids\shot1.png"
+       inkscape:export-filename="C:\Users\raphael\Desktop\Unity\AsteroidsRemix\Assets\Textures\shot1.png"
        inkscape:export-xdpi="102.63"
        inkscape:export-ydpi="102.63" />
-    <g
-       id="g3876"
-       transform="matrix(0.45602776,0,0,0.45602776,194.52467,331.78966)"
-       inkscape:export-filename="D:\rbacco\perso\Unity\TestProject\Assets\Textures\Asteroids\Cursor.png"
-       inkscape:export-xdpi="102.63"
-       inkscape:export-ydpi="102.63"
-       style="stroke-width:4.38569792;stroke-miterlimit:4;stroke-dasharray:none">
-      <path
-         transform="translate(0,52.362183)"
-         inkscape:connector-curvature="0"
-         id="path3864"
-         d="m 214.80158,521.65354 0,-17.71653"
-         style="fill:none;stroke:#ffffff;stroke-width:4.38569792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-      <path
-         transform="translate(0,52.362183)"
-         inkscape:connector-curvature="0"
-         id="path3866"
-         d="m 199.45861,530.51181 -15.34297,-8.85827"
-         style="fill:none;stroke:#ffffff;stroke-width:4.38569792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-      <path
-         transform="translate(0,52.362183)"
-         inkscape:connector-curvature="0"
-         id="path3868"
-         d="m 199.45861,548.22835 -15.34297,8.85826"
-         style="fill:none;stroke:#ffffff;stroke-width:4.38569792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-      <path
-         transform="translate(0,52.362183)"
-         inkscape:connector-curvature="0"
-         id="path3870"
-         d="m 214.80158,557.08661 0,17.71654"
-         style="fill:none;stroke:#ffffff;stroke-width:4.38569792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-      <path
-         transform="translate(0,52.362183)"
-         inkscape:connector-curvature="0"
-         id="path3872"
-         d="m 230.14455,548.22835 15.34297,8.85826"
-         style="fill:none;stroke:#ffffff;stroke-width:4.38569792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-      <path
-         transform="translate(0,52.362183)"
-         inkscape:connector-curvature="0"
-         id="path3874"
-         d="m 230.14455,530.51181 15.34297,-8.85827"
-         style="fill:none;stroke:#ffffff;stroke-width:4.38569792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-    </g>
   </g>
 </svg>

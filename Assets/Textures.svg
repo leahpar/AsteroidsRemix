@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="drawing-2.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="89.880007"
+     inkscape:cy="833.92561"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1-9"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1280"
+     inkscape:window-height="977"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="layer1-9"
+       inkscape:label="Layer 1"
+       transform="translate(14.175056,11.297883)">
+      <rect
+         y="-13.063396"
+         x="8.2322359"
+         height="292.23654"
+         width="210.3649"
+         id="rect3753"
+         style="fill:#000000;fill-opacity:1;stroke:none" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path3755"
+         d="m 69.102196,38.363847 -13.6323,34.671838 13.53018,-7.036526 13.53598,7.036526 z"
+         style="fill:none;stroke:#ffffff;stroke-width:2.93383932;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         inkscape:export-filename="D:\rbacco\perso\Unity\SpaceShooter\Assets\Textures\textures.png"
+         inkscape:export-xdpi="102.63"
+         inkscape:export-ydpi="102.63" />
+      <rect
+         y="93.66449"
+         x="55.383785"
+         height="28.636364"
+         width="28.636364"
+         id="rect3757"
+         style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         inkscape:export-filename="D:\rbacco\perso\Unity\SpaceShooter\Assets\Textures\textures.png"
+         inkscape:export-xdpi="102.63"
+         inkscape:export-ydpi="102.63" />
+      <path
+         transform="matrix(0.96685028,0,0,0.92534288,28.031663,24.853388)"
+         inkscape:transform-center-y="-0.024490219"
+         inkscape:transform-center-x="-1.9885244"
+         d="M 103.03556,111.40509 78.629475,103.58093 78.528796,77.951564 102.87266,69.935902 118.01867,90.611317 z"
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="true"
+         sodipodi:arg2="1.8810273"
+         sodipodi:arg1="1.2527088"
+         sodipodi:r2="17.638035"
+         sodipodi:r1="21.801809"
+         sodipodi:cy="90.69696"
+         sodipodi:cx="96.217033"
+         sodipodi:sides="5"
+         id="path3763"
+         style="fill:none;stroke:#ffffff;stroke-width:2.11445788;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         sodipodi:type="star"
+         inkscape:export-filename="D:\rbacco\perso\Unity\SpaceShooter\Assets\Textures\textures.png"
+         inkscape:export-xdpi="102.63"
+         inkscape:export-ydpi="102.63" />
+      <path
+         transform="matrix(1.1503644,0,0,1.1503644,-8.03117,38.490064)"
+         d="m 79.044438,126.55737 -20.732244,6.1098 -15.657365,-14.89975 5.07488,-21.009547 20.732244,-6.1098 15.657365,14.899747 z"
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="true"
+         sodipodi:arg2="1.2842086"
+         sodipodi:arg1="0.76060985"
+         sodipodi:r2="18.718084"
+         sodipodi:r1="21.613783"
+         sodipodi:cy="111.65762"
+         sodipodi:cx="63.387074"
+         sodipodi:sides="6"
+         id="path3767"
+         style="fill:none;stroke:#ffffff;stroke-width:1.73857953;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         sodipodi:type="star"
+         inkscape:export-filename="D:\rbacco\perso\Unity\SpaceShooter\Assets\Textures\textures.png"
+         inkscape:export-xdpi="102.63"
+         inkscape:export-ydpi="102.63" />
+      <path
+         transform="matrix(0.41597736,0,0,0.43744597,45.989925,180.87205)"
+         inkscape:transform-center-y="2.2301869"
+         inkscape:transform-center-x="0.73535036"
+         d="M 66.41753,136.91143 38.150264,100.19854 84.078195,94.074814 z"
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="true"
+         sodipodi:arg2="2.4854423"
+         sodipodi:arg1="1.4382448"
+         sodipodi:r2="13.375584"
+         sodipodi:r1="26.751167"
+         sodipodi:cy="110.39493"
+         sodipodi:cx="62.881996"
+         sodipodi:sides="3"
+         id="path3769"
+         style="fill:none;stroke:#ffffff;stroke-width:4.6884894;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         sodipodi:type="star"
+         inkscape:export-filename="D:\rbacco\perso\Unity\SpaceShooter\Assets\Textures\textures.png"
+         inkscape:export-xdpi="102.63"
+         inkscape:export-ydpi="102.63" />
+      <path
+         transform="matrix(1.3430374,0,0,1.3430374,41.683618,25.718248)"
+         inkscape:transform-center-y="0.89404923"
+         inkscape:transform-center-x="-0.57585837"
+         d="m 77.529207,126.30484 -17.836776,6.73387 -16.385801,-9.74685 -2.595983,-18.888 13.148662,-13.806098 18.992098,1.672079 10.534095,15.891139 z"
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="true"
+         sodipodi:arg2="1.2098117"
+         sodipodi:arg1="0.76101275"
+         sodipodi:r2="19.795023"
+         sodipodi:r1="21.970818"
+         sodipodi:cy="111.15255"
+         sodipodi:cx="61.619305"
+         sodipodi:sides="7"
+         id="path3771"
+         style="fill:none;stroke:#ffffff;stroke-width:1.48916181;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         sodipodi:type="star"
+         inkscape:export-filename="D:\rbacco\perso\Unity\SpaceShooter\Assets\Textures\textures.png"
+         inkscape:export-xdpi="102.63"
+         inkscape:export-ydpi="102.63" />
+      <path
+         transform="translate(-65,-57.5)"
+         d="m 186.28572,114.32647 0.56925,11.26235 -5.48581,-9.85243 -10.53521,4.02165 7.675,-8.26188 -7.08037,-8.77683 10.22922,4.7463 6.1593,-9.446025 -1.35299,11.195255 10.88703,2.93886 z"
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="false"
+         sodipodi:arg2="1.2915215"
+         sodipodi:arg1="0.66320299"
+         sodipodi:r2="14.502815"
+         sodipodi:r1="4.3508444"
+         sodipodi:cy="111.6479"
+         sodipodi:cx="182.85715"
+         sodipodi:sides="5"
+         id="path3775"
+         style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         sodipodi:type="star"
+         inkscape:export-filename="D:\rbacco\perso\Unity\SpaceShooter\Assets\Textures\textures.png"
+         inkscape:export-xdpi="102.63"
+         inkscape:export-ydpi="102.63" />
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path3762"
+         d="m 122.64422,224.50504 0,7.14286"
+         style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         inkscape:export-filename="D:\rbacco\perso\Unity\SpaceShooter\Assets\Textures\textures.png"
+         inkscape:export-xdpi="102.63"
+         inkscape:export-ydpi="102.63" />
+    </g>
+  </g>
+</svg>

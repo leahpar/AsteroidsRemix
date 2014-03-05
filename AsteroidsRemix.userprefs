@@ -1,13 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Controller\CaracController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Controller\AsteroidController.cs">
     <Files>
-      <File FileName="Assets\Script\Controller\GameController.cs" Line="169" Column="46" />
-      <File FileName="Assets\Script\Controller\MusicController.cs" Line="14" Column="51" />
-      <File FileName="Assets\Script\Controller\MenuController.cs" Line="127" Column="74" />
-      <File FileName="Assets\Script\Controller\DataController.cs" Line="32" Column="16" />
-      <File FileName="Assets\Script\Controller\CaracController.cs" Line="176" Column="106" />
-      <File FileName="Assets\Script\Controller\GUIController.cs" Line="51" Column="34" />
+      <File FileName="Assets\Script\Controller\AsteroidController.cs" Line="31" Column="3" />
+      <File FileName="Assets\Script\Controller\SatelliteController.cs" Line="47" Column="53" />
+      <File FileName="Assets\Script\Controller\GameController.cs" Line="81" Column="38" />
+      <File FileName="Assets\Script\Components\Debris.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Components\Explosion.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Components\Health.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

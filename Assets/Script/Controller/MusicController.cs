@@ -6,7 +6,7 @@ public class MusicController : MonoBehaviour
 
 	void Start()
 	{
-		StartMusic();
+		//StartMusic();
 	}
 
 	public void StartMusic()

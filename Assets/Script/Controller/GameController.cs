@@ -12,9 +12,10 @@ public class GameController : MonoBehaviour
 	private GameObject player;
 
 	// game's components
-	private GUIController gui;
+	private HUDController hud;
 	private MenuController menu;
 	private MusicController music;
+	private CaracController carac;
 
 	// Game's variables
 	public int   score = 0;
@@ -41,9 +42,10 @@ public class GameController : MonoBehaviour
 	 */
 	void Start()
 	{
-		gui   = gameObject.GetComponent<GUIController>();
+		hud   = gameObject.GetComponent<HUDController>();
 		menu  = gameObject.GetComponent<MenuController>();
 		music = gameObject.GetComponent<MusicController>();
+		carac = gameObject.GetComponent<CaracController>();
 	}
 
 	/*
@@ -59,6 +61,8 @@ public class GameController : MonoBehaviour
 		int waveSpawns, currentSpawns;
 
 		yield return new WaitForSeconds (startWait);
+
+		// bla bla get ready
 
 		while (true)
 		{
@@ -90,7 +94,7 @@ public class GameController : MonoBehaviour
 	 */
 	public void AddScore(int points)
 	{
-		gui.AddScore(points);
+		hud.AddScore(points);
 		score += points;
 	}
 
@@ -113,6 +117,8 @@ public class GameController : MonoBehaviour
 		ResetGlobalCoeff();
 		ResetPlayerCoeff();
 		score = 0;
+		hud.ResetScore();
+		DataController.StatCurKills = 0;
 
 		// Destroy enemies of the last game
 		GameObject[] asteroids = GameObject.FindGameObjectsWithTag("Enemy");
@@ -141,6 +147,7 @@ public class GameController : MonoBehaviour
 
 		// time played
 		timePlayed = (int)(Time.time - globalCoeffBase);
+		DataController.UpdateStatTime(timePlayed);
 
 		// stop music
 		music.StopMusic();
@@ -152,7 +159,8 @@ public class GameController : MonoBehaviour
 		StopCoroutine("SpawnAsteroids");
 
 		// Update global score
-		DataController.GlobalScore += score;
+		DataController.Points += score;
+		DataController.gPoints += score;
 
 		// Set menu
 		menu.state = MenuController.MENU_STATE_OVER;
@@ -175,7 +183,7 @@ public class GameController : MonoBehaviour
 	 */
 	void ResetPlayerCoeff()
 	{
-		playerCoeffBase = Time.time;
+		playerCoeffBase = Time.time - carac.GetBonus();
 	}
 
 	/*

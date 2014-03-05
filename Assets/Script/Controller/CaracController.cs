@@ -23,21 +23,24 @@ public class CaracController : MonoBehaviour {
 	private float frateB = 10.0f;
 	private float frateA = 1.0f;
 
+	// bonus
+	// y = ax + b
+	private float bonusB = 0.0f;
+	private float bonusA = 1.0f;
+
 	// extra shot
 	// y = (x >= a) ? 3 : 2
-	private int shotA = 10;
+	private int shotA = 11;
 
 	// cost
 	// c = ax + b
-	private float costB = 0.0f;
-	private float costA = 10000.0f;
-
-	
+	private float costB = 10000.0f;
+	private float costA = 1000.0f;
 
 
 	public int Cost(int level)
 	{
-		return (int)(costB + costA * (level+1));
+		return (int)(costB + costA * level * level);
 	}
 
 
@@ -45,9 +48,9 @@ public class CaracController : MonoBehaviour {
 	{
 		int lvl = DataController.UpLife;
 
-		if (DataController.GlobalScore >= Cost (lvl))
+		if (DataController.Points >= Cost (lvl))
 		{
-			DataController.GlobalScore -= Cost (lvl);
+			DataController.Points -= Cost (lvl);
 			DataController.UpLife++;
 		}
 	}
@@ -56,9 +59,9 @@ public class CaracController : MonoBehaviour {
 	{
 		int lvl = DataController.UpRegen;
 		
-		if (DataController.GlobalScore >= Cost (lvl))
+		if (DataController.Points >= Cost (lvl))
 		{
-			DataController.GlobalScore -= Cost (lvl);
+			DataController.Points -= Cost (lvl);
 			DataController.UpRegen++;
 		}
 	}
@@ -67,9 +70,9 @@ public class CaracController : MonoBehaviour {
 	{
 		int lvl = DataController.UpDmg;
 		
-		if (DataController.GlobalScore >= Cost (lvl))
+		if (DataController.Points >= Cost (lvl))
 		{
-			DataController.GlobalScore -= Cost (lvl);
+			DataController.Points -= Cost (lvl);
 			DataController.UpDmg++;
 		}
 	}
@@ -78,9 +81,9 @@ public class CaracController : MonoBehaviour {
 	{
 		int lvl = DataController.UpFireRate;
 		
-		if (DataController.GlobalScore >= Cost (lvl))
+		if (DataController.Points >= Cost (lvl))
 		{
-			DataController.GlobalScore -= Cost (lvl);
+			DataController.Points -= Cost (lvl);
 			DataController.UpFireRate++;
 		}
 	}
@@ -88,13 +91,23 @@ public class CaracController : MonoBehaviour {
 	{
 		int lvl = DataController.UpShot;
 		
-		if (DataController.GlobalScore >= Cost (lvl))
+		if (DataController.Points >= Cost (lvl))
 		{
-			DataController.GlobalScore -= Cost (lvl);
+			DataController.Points -= Cost (lvl);
 			DataController.UpShot++;
 		}
 	}
 
+	public void UpdateBonus()
+	{
+		int lvl = DataController.UpBonus;
+		
+		if (DataController.Points >= Cost (lvl))
+		{
+			DataController.Points -= Cost (lvl);
+			DataController.UpBonus++;
+		}
+	}
 
 
 	public float GetLife()
@@ -142,6 +155,15 @@ public class CaracController : MonoBehaviour {
 		return (level >= shotA) ? 3 : 2;
 	}
 
+	public float GetBonus()
+	{
+		return GetBonus(DataController.UpBonus);
+	}
+	public float GetBonus(int level)
+	{
+		return bonusB + bonusA * level;
+	}
+
 	public string GetLabelLife()
 	{
 		return GetLabel("Max life", 
@@ -162,6 +184,7 @@ public class CaracController : MonoBehaviour {
 		                DataController.UpDmg,
 		                "Make " + GetDamage() + " damage");
 	}
+
 	public string GetLabelFireRate()
 	{
 		return GetLabel("Fire rate",
@@ -173,16 +196,28 @@ public class CaracController : MonoBehaviour {
 	{
 		int c = Cost (DataController.UpShot);
 		return "<b><color=teal>Extra shot</color></b>\n"
-			+ "<color=" + ((DataController.GlobalScore >= c) ? "green" : "red") + ">[Points: " + c.ToString("0,0") + "]</color>\n"
+			+ "<color=" + ((DataController.Points >= c) ? "green" : "red") + ">[Points: " + c.ToString("0,0") + "]</color>\n"
 			+ "<i>Fire 3 shots instead of 2</i>";
 	}
+	public string GetLabelExtraShot2()
+	{
+		return "<b><color=teal>Extra shot</color></b>\n"
+			+ "<color=red>[max]</color>\n"
+				+ "<i>Fire 3 shots instead of 2</i>";
+	}
 
-	
+	public string GetLabelBonus()
+	{
+		return GetLabel("Score bonus",
+		                DataController.UpBonus,
+		                "Start with " + GetBonus() + "% bonus");
+	}
+
 	string GetLabel(string title, int level, string desc)
 	{
 		int c = Cost (level);
 		return "<b><color=teal>" + title + "</color></b>\n"
-			+ "<color=" + ((DataController.GlobalScore >= c) ? "green" : "red") + ">[lvl: " + level + " "
+			+ "<color=" + ((DataController.Points >= c) ? "green" : "red") + ">[lvl: " + level + " - "
 				+ "Points: " + c.ToString("0,0") + "]</color>\n"
 			+ "<i>" + desc + "</i>";
 	}
