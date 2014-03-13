@@ -6,7 +6,15 @@ public class DataController : MonoBehaviour
 
 	public const string Title 			= "Asteroids Remix";
 	public const float Version 			= 0.1f;
+	public const string sVersion        = "alpha1 (20140313)";
 	private float 	   CurVersion 		= 0.0f;
+
+	/*
+	 * v0.1
+	 * alpha1 2014-03-13
+	 * 
+	 * 
+	 */
 
 	// Score
 	public static int   Points			= 0;
@@ -20,26 +28,27 @@ public class DataController : MonoBehaviour
 	public static int	StatBestKills	= 0;
 
 	// Options
-	public static int   OptMusic		= 0;
-	public static int   OptSound		= 0;
+	public static int   OptMusic		= 1;
+	public static int   OptSound		= 1;
 
 	// upgrades
 	public static int   UpLife			= 0;
 	public static int   UpRegen			= 0;
 	public static int   UpDmg			= 0;
 	public static int   UpFireRate 		= 0;
-	public static int   UpShot			= 10;
+	public static int   UpShot			= 11;
 	public static int   UpBonus         = 0;
+	public static int   UpShield		= 0;
 
 
 	void Awake ()
 	{
 		DontDestroyOnLoad (gameObject);
 		// uncomment to reset prefs
-		PlayerPrefs.DeleteAll();
-		SaveData();
+		//PlayerPrefs.DeleteAll();
+		//SaveData();
 		LoadData();
-		Points += 10000000;
+		//Points += 10000000;
 	}
 
 	void OnApplicationPause(bool pauseStatus)
@@ -65,6 +74,7 @@ public class DataController : MonoBehaviour
 		PlayerPrefs.SetInt("UpFireRate", 	UpFireRate);
 		PlayerPrefs.SetInt("UpShot", 		UpShot);
 		PlayerPrefs.SetInt("UpBonus", 		UpBonus);
+		PlayerPrefs.SetInt("UpShield", 		UpShield);
 		PlayerPrefs.SetInt("StatKills", 	StatKills);
 		PlayerPrefs.SetInt("StatBestKills", StatBestKills);
 		PlayerPrefs.SetInt("StatTime", 		StatTime);
@@ -85,6 +95,7 @@ public class DataController : MonoBehaviour
 		UpFireRate 		= PlayerPrefs.GetInt("UpFireRate", 		UpFireRate);
 		UpShot 			= PlayerPrefs.GetInt("UpShot", 			UpShot);
 		UpBonus 		= PlayerPrefs.GetInt("upBonus", 		UpBonus);
+		UpShield		= PlayerPrefs.GetInt("UpShield", 		UpShield);
 		StatKills   	= PlayerPrefs.GetInt("StatKills", 		StatKills);
 		StatBestKills 	= PlayerPrefs.GetInt("StatBestKills", 	StatBestKills);
 		StatTime 		= PlayerPrefs.GetInt("StatTime", 		StatTime);

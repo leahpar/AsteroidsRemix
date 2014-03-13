@@ -146,6 +146,13 @@ public class MenuController : MonoBehaviour
 			{
 				carac.UpdateFireRate();
 			}
+			/*
+			if (AddButton(3, 2, carac.GetLabelShieldFireRate()))
+			{
+				carac.UpdateShieldFireRate();
+			}
+			*/
+			/*
 			if (DataController.UpShot < 11)
 			{
 				if (AddButton(3, 2, carac.GetLabelExtraShot())) carac.UpdateShot();
@@ -154,10 +161,13 @@ public class MenuController : MonoBehaviour
 			{
 				if (AddButton(3, 2, carac.GetLabelExtraShot2())) {};
 			}
+			*/
 			if (AddButton(2, 3, "Back"))
 			{
 				state = MENU_STATE_STOP;
 			}
+			break;
+		default:
 			break;
 		}
 	}

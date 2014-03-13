@@ -6,6 +6,7 @@ public class KillCounter : MonoBehaviour
 	void OnDeath()
 	{
 		DataController.UpdateStatKills(1);
+		GameController.enemiesCount--;
 	}
 }
 

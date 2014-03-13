@@ -5,11 +5,15 @@ using System.Collections.Generic; // List
 public class GameController : MonoBehaviour
 {
 	// asteroids to spawn
-	public  GameObject[] asteroidsPrefab;
+	public GameObject asteroidsPrefab;
+	public GameObject satellitesPrefab; 
+
 
 	// player prefab
 	public GameObject playerPrefab;
 	private GameObject player;
+	public GameObject shieldPrefab;
+	private GameObject shield;
 
 	// game's components
 	private HUDController hud;
@@ -20,6 +24,9 @@ public class GameController : MonoBehaviour
 	// Game's variables
 	public int   score = 0;
 	private bool gameOver;
+	public static int enemiesCount;
+
+	public static int level;
 
 	private float playerCoeffBase = 0;
 	// coeff
@@ -31,9 +38,8 @@ public class GameController : MonoBehaviour
 
 
 	// Waves' options
-	public float startWait = 2.0f;
 	public float spawnWait = 1.5f;
-	public float waveWait  = 5.0f;
+	public float waveWait  = 3.0f;
 
 
 	/* 
@@ -48,45 +54,120 @@ public class GameController : MonoBehaviour
 		carac = gameObject.GetComponent<CaracController>();
 	}
 
-	/*
-	 * coroutine SpawnAsteroids
-	 * Spawn asteroids in an infinite loop
-	 * (until coroutine is stopped by GameOver function)
-	 */
-	IEnumerator SpawnAsteroids ()
+
+	IEnumerator RunGame()
 	{
-		GameObject spawn;
-		AsteroidController spawnController;
-		Vector2 spawnPosition;
-		int waveSpawns, currentSpawns;
-
-		yield return new WaitForSeconds (startWait);
-
-		// bla bla get ready
-
+		level = 1;
 		while (true)
 		{
-			waveSpawns = Random.Range(10, 20);
-			currentSpawns = 0;
-			while (currentSpawns < waveSpawns)
-			{
-				// Set a random position to spawn
-				spawnPosition = new Vector2((Random.value > 0.5) ? WorldController.xMax : -WorldController.xMax,
-				                            Random.Range(-WorldController.yMax, WorldController.yMax));
-				// Instantiace asteroid
-				spawn = Instantiate (asteroidsPrefab[Random.Range(0, asteroidsPrefab.Length)],
-				                     spawnPosition,
-				                     Quaternion.identity) as GameObject;
-				// Init random speed and torque
-				spawnController = spawn.GetComponent<AsteroidController>();
-				spawnController.RandomStart();
-
-				currentSpawns++;
-				yield return new WaitForSeconds (Random.Range(spawnWait/2, spawnWait));
-			}
-			asteroidKilled += waveSpawns;
+			// Run level
+			hud.SetSplash("Level " + level, 4.0f);
 			yield return new WaitForSeconds (waveWait);
+
+			enemiesCount = 0;
+
+			StartCoroutine("SpawnAsteroids");
+			StartCoroutine("SpawnSatellites");
+			StartCoroutine("SpawnBonuses");
+			
+			// wait for waves to be initialized
+			yield return new WaitForSeconds (1.0f);
+
+			// wait for enemies to be destroyed
+			while (enemiesCount > 0)
+			{
+				yield return 0;
+			}
+
+			level++;
 		}
+	}
+
+	/*
+	IEnumerator RunLevel()
+	{
+		StartCoroutine("SpawnAsteroids");
+		StartCoroutine("SpawnSatellites");
+		StartCoroutine("SpawnBonuses");
+
+		// wait for waves to be initialized
+		yield return new WaitForSeconds (1.0f);
+
+		while (enemiesCount > 0)
+		{
+			yield return 0;
+		}
+		levelDone = true;
+	}
+	*/
+
+	IEnumerator SpawnAsteroids()
+	{
+		int cpt = 0;
+		int enemies = 10 + level / 2;
+		enemiesCount += enemies;
+
+		GameObject spawn;
+		AsteroidController enemiController;
+		Vector2 enemiPosition;
+
+		while (cpt < enemies)
+		{
+			// Set a random position to spawn
+			enemiPosition = new Vector2((Random.value > 0.5f) ? WorldController.xMax : -WorldController.xMax,
+			                            Random.Range(-WorldController.yMax, WorldController.yMax));
+			// Instantiace asteroid
+			spawn = Instantiate (asteroidsPrefab, enemiPosition, Quaternion.identity) as GameObject;
+			// Random start
+			enemiController = spawn.GetComponent<AsteroidController>();
+			// TODO : spawnController.health *= xxx; // Health + 20% per level
+
+			enemiController.SetDebris(level / 2);
+			enemiController.RandomStart();
+
+			// TODO : difficulty...
+			yield return new WaitForSeconds(15.0f / (float)enemies);
+			cpt++;
+		}
+		yield return 0;
+	}
+
+	IEnumerator SpawnSatellites()
+	{
+		int cpt = 0;
+		int enemies = level / 4;
+		enemiesCount += enemies;
+
+		GameObject spawn;
+		AsteroidController enemiController;
+		Vector2 enemiPosition;
+		
+		while (cpt < enemies)
+		{
+			// Set a random position to spawn
+			enemiPosition = Random.insideUnitCircle.normalized * WorldController.yMax;
+			// Instantiace satellite
+			spawn = Instantiate (satellitesPrefab, enemiPosition, Quaternion.identity) as GameObject;
+			// Random start
+			enemiController = spawn.GetComponent<AsteroidController>();
+			// TODO : spawnController.health *= xxx; // Health + 20% per level
+			enemiController.SetDebris(level);
+			enemiController.SetDebrisRate(10.0f / (float)level);
+			enemiController.RandomStart();
+			
+			// TODO : difficulty...
+			yield return new WaitForSeconds(15.0f / (float)enemies);
+			cpt++;
+		}
+		yield return 0;
+
+	}
+
+	IEnumerator SpawnBonuses()
+	{
+		// ...
+		yield return 0;
+
 	}
 
 	/* 
@@ -121,10 +202,10 @@ public class GameController : MonoBehaviour
 		DataController.StatCurKills = 0;
 
 		// Destroy enemies of the last game
-		GameObject[] asteroids = GameObject.FindGameObjectsWithTag("Enemy");
-		foreach(GameObject a in asteroids)
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+		foreach(GameObject e in enemies)
 		{
-			if (a) Destroy(a);
+			if (e) Destroy(e);
 		}
 
 		// start music
@@ -132,8 +213,10 @@ public class GameController : MonoBehaviour
 
 		// add a player !
 		player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-		// and spaws asteroids
-		StartCoroutine ("SpawnAsteroids");
+		//shield = Instantiate(shieldPrefab, Vector2.zero, Quaternion.identity) as GameObject;
+
+		// and run the game
+		StartCoroutine ("RunGame");
 	}
 
 	/*
@@ -153,10 +236,11 @@ public class GameController : MonoBehaviour
 		music.StopMusic();
 
 		// Destroy player
-		EventController.KillAndDestroy(player);
+		if (player) EventController.KillAndDestroy(player);
+		if (shield) EventController.KillAndDestroy(shield);
 
 		// stop spawing waves
-		StopCoroutine("SpawnAsteroids");
+		StopCoroutine("RunGame");
 
 		// Update global score
 		DataController.Points += score;

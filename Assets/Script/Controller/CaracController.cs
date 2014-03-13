@@ -28,19 +28,24 @@ public class CaracController : MonoBehaviour {
 	private float bonusB = 0.0f;
 	private float bonusA = 1.0f;
 
+	// shield fireRate
+	// y = 1 / (ax + b)
+	private float shieldFRateB = 1.0f;
+	private float shieldFRateA = 1.0f;
+
 	// extra shot
 	// y = (x >= a) ? 3 : 2
 	private int shotA = 11;
 
 	// cost
 	// c = ax + b
-	private float costB = 10000.0f;
+	private float costB = 5000.0f;
 	private float costA = 1000.0f;
 
 
 	public int Cost(int level)
 	{
-		return (int)(costB + costA * level * level);
+		return (int)(costB + costA * level);
 	}
 
 
@@ -87,6 +92,18 @@ public class CaracController : MonoBehaviour {
 			DataController.UpFireRate++;
 		}
 	}
+
+	public void UpdateShieldFireRate()
+	{
+		int lvl = DataController.UpShield;
+		
+		if (DataController.Points >= Cost (lvl))
+		{
+			DataController.Points -= Cost (lvl);
+			DataController.UpShield++;
+		}
+	}
+
 	public void UpdateShot()
 	{
 		int lvl = DataController.UpShot;
@@ -146,6 +163,15 @@ public class CaracController : MonoBehaviour {
 		return 1.0f / (frateB + frateA * level);
 	}
 
+	public float GetShieldFireRate()
+	{
+		return GetShieldFireRate(DataController.UpShield);
+	}
+	public float GetShieldFireRate(int level)
+	{
+		return 1.0f / (shieldFRateB + shieldFRateA * level);
+	}
+
 	public int GetShot()
 	{
 		return GetShot(DataController.UpShot);
@@ -175,7 +201,7 @@ public class CaracController : MonoBehaviour {
 	{
 		return GetLabel("Life regenration",
 		                DataController.UpRegen,
-		                "Regenerate " + GetRegen() + " HP/s");
+		                "Regenerate " + GetRegen() + " HP/sec");
 	}
 
 	public string GetLabelDamage()
@@ -189,7 +215,14 @@ public class CaracController : MonoBehaviour {
 	{
 		return GetLabel("Fire rate",
 		                DataController.UpFireRate,
-		                "Fire " + (1.0f/GetFireRate()) + " shots / s");
+		                "Fire " + (1.0f/GetFireRate()) + " shot" + (1.0f/GetFireRate() > 1 ? "s" : "") + "/sec");
+	}
+
+	public string GetLabelShieldFireRate()
+	{
+		return GetLabel("Shield fire rate",
+		                DataController.UpShield,
+		                "Fire " + (1.0f/GetShieldFireRate()) + " shot" + (1.0f/GetShieldFireRate() > 1 ? "s" : "") + "/sec");
 	}
 
 	public string GetLabelExtraShot()
@@ -217,8 +250,18 @@ public class CaracController : MonoBehaviour {
 	{
 		int c = Cost (level);
 		return "<b><color=teal>" + title + "</color></b>\n"
-			+ "<color=" + ((DataController.Points >= c) ? "green" : "red") + ">[lvl: " + level + " - "
-				+ "Points: " + c.ToString("0,0") + "]</color>\n"
+			+ "<color=" + ((DataController.Points >= c) ? "green" : "red") + ">lvl " + level + " - "
+				+ "Points: " + c.ToString("0,0") + "</color>\n"
+				+ desc;
+	}
+	/*
+	string GetLabel(string title, int level, string desc)
+	{
+		int c = Cost (level);
+		return "<b><color=teal>" + title + "</color></b>\n"
+			+ "<color=" + ((DataController.Points >= c) ? "green" : "red") + ">lvl " + level + " - "
+				+ "Points: " + c.ToString("0,0") + "</color>\n"
 			+ "<i>" + desc + "</i>";
 	}
+	*/
 }

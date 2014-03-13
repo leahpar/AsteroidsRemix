@@ -35,6 +35,8 @@ public class HUDController : MonoBehaviour
 	private string scoreLabel;
 	private float scoreTime = 0;
 
+	private float timeSplash;
+	private string labelSplash;
 
 	void Start()
 	{
@@ -61,7 +63,7 @@ public class HUDController : MonoBehaviour
 
 	void DisplayGameOver()
 	{
-		textTitle.text = "Game Over";
+		textTitle.text = "Level " + GameController.level +  " - Game Over";
 	}
 
 	void DisplayScore()
@@ -99,6 +101,12 @@ public class HUDController : MonoBehaviour
 		textTopLeft.text = "Points: " + DataController.Points.ToString("0,0");
 	}
 
+	void DisplayLevel()
+	{
+		textBottomLeft.text = "Level: " + GameController.level;
+
+	}
+
 	void DisplayLife()
 	{
 		textTopRight.text = "Life: " + System.String.Format ("{0:F0}", PlayerController.health);
@@ -114,12 +122,26 @@ public class HUDController : MonoBehaviour
 
 	void DisplayVersion()
 	{
-		textBottomCenter.text = "v" + DataController.Version.ToString();
+		textBottomCenter.text = "version : " + DataController.sVersion;
 	}
 
 	public void AddScore(int points)
 	{
 		scoreList.Add(new ScoreItem(points));
+	}
+
+	public void SetSplash(string label, float time)
+	{
+		labelSplash = label;
+		timeSplash = Time.time + time;
+
+	}
+	void DisplaySplash()
+	{
+		if (Time.time < timeSplash)
+		{
+			textTitle.text = labelSplash;
+		}
 	}
 
 	void ResetDisplay()
@@ -159,9 +181,10 @@ public class HUDController : MonoBehaviour
 			break;
 		case MenuController.MENU_STATE_RUN:
 		case MenuController.MENU_STATE_PAUSE:
+			DisplaySplash();
 			DisplayScore();
 			DisplayLife();
-			DisplayCoeff();
+			DisplayLevel();
 			break;
 		}
 	}
